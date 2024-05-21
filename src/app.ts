@@ -7,6 +7,7 @@ app.use(express.json())
 
 app.use("/api/products" , productsRouter);
 
+
 app.get('/', (req : Request , res : Response) => {
   res.send('Hello World!')
 })

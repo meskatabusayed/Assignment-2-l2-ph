@@ -7,6 +7,14 @@ const createProduct = async(payLoad : TProduct) => {
     return result;
 }
 
+//getAllProducts
+
+const getAllProducts = async() => {
+    const result =await  Product.find();
+    return result;
+}
+
 export const productServices = {
     createProduct,
+    getAllProducts,
 }
