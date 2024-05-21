@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { productServices } from "./product.services";
+import mongoose from "mongoose";
 
 const createProduct = async(req : Request , res : Response) => {
     const productData = req.body;
@@ -36,8 +37,37 @@ const getAllProducts = async(req : Request , res : Response) => {
     }
 }
 
+//getSpecificData
+
+const getSpecificProduct = async(req : Request , res : Response) => {
+    try{
+        
+        const {productId} = req.params;
+        
+
+        const result = await productServices.getSpecificProduct(productId);
+        
+
+        res.status(200).json({
+            success : true,
+            messgae : "Product fatched successfully!",
+            data : result
+        })
+
+
+    }catch(error : any){
+        res.status(500).json({
+            success : false,
+            message : "Could not fached product",
+            error : error
+        })
+    }
+}
+
+
 
 export const productControllers = {
     createProduct,
-    getAllProducts
+    getAllProducts,
+    getSpecificProduct
 }
