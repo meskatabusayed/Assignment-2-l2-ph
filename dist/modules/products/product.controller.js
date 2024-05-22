@@ -8,12 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.productControllers = void 0;
 const product_services_1 = require("./product.services");
+const product_validatiion_joi_1 = __importDefault(require("./product.validatiion.joi"));
 const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const productData = req.body;
-    const result = yield product_services_1.productServices.createProduct(productData);
+    const { error, value } = product_validatiion_joi_1.default.validate(productData);
+    const result = yield product_services_1.productServices.createProduct(value);
     res.json({
         sucess: true,
         message: "Product created successfully!",

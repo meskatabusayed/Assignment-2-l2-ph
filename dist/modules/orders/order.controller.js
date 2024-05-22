@@ -18,13 +18,6 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const product_model_1 = require("../products/product.model");
 const order_model_1 = require("./order.model");
 const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // const orderData = req.body;
-    // const result = await orderServices.createOrder(orderData);
-    // res.json({
-    //     sucess : true,
-    //     message : "Orders created successfully!",
-    //     data : result
-    // })
     try {
         const { error } = order_validation_joi_1.createOrderSchema.validate(req.body);
         if (error) {
@@ -38,7 +31,7 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         if (!mongoose_1.default.Types.ObjectId.isValid(productId)) {
             return res.status(404).json({
                 success: false,
-                message: `product not found ${productId}`
+                message: `Order not found ${productId}`
             });
         }
         const product = yield product_model_1.Product.findById(productId);
