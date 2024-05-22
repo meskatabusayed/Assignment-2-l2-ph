@@ -7,14 +7,6 @@ const createProduct = async (payLoad: TProduct) => {
     return result;
 }
 
-//getAllProducts
-
-// const getAllProducts = async () => {
-//     const result = await Product.find({ isDelete: { $ne: true } });
-//     return result;
-// }
-
-//get Specific data
 
 const getSpecificProduct = async (_id: String) => {
 
@@ -55,7 +47,6 @@ const deleteProductById = async (productId: String) => {
 
 export const productServices = {
     createProduct,
-    //getAllProducts,
     getSpecificProduct,
     updateProductById,
     deleteProductById,
