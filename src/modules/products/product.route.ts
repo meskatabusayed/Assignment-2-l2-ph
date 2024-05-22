@@ -13,6 +13,7 @@ router.post('/' , productControllers.createProduct);
 router.get('/:productId' , productControllers.getSpecificProduct);
 router.put('/:productId' , productControllers.updateProductById);
 router.delete('/:productId' , productControllers.deleteProductById);
+
 router.get('/', async (req: Request, res: Response) => {
     try {
       const searchTerm = req.query.searchTerm as string;
