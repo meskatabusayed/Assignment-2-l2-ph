@@ -8,7 +8,7 @@ const createProduct = async (payLoad: TProduct) => {
 }
 
 
-const getSpecificProduct = async (_id: String) => {
+const getSpecificProduct = async (_id: string) => {
 
     const result = await Product.findById({ _id, isDelete: { $ne: true } });
     return result;
@@ -16,14 +16,14 @@ const getSpecificProduct = async (_id: String) => {
 
 //update Product By Id
 
-const updateProductById = async (_id: String, updatedProduct: any) => {
+const updateProductById = async (_id: string, updatedProduct: any) => {
     const result = await Product.findByIdAndUpdate( _id, updatedProduct, { new: true })
     return result;
 }
 
 //delete product
 
-const deleteProductById = async (productId: String) => {
+const deleteProductById = async (productId: string) => {
     const result = await Product.findByIdAndDelete(productId , { isDelete: { $ne: true } })
     return result;
 }

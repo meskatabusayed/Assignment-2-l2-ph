@@ -3,10 +3,13 @@ import { productServices } from "./product.services";
 
 import { TProduct } from "./product.interface";
 import { Product } from "./product.model";
+import productValidationSchema from "./product.validatiion.joi";
 
 const createProduct = async(req : Request , res : Response) => {
+
     const productData = req.body;
-    const result = await productServices.createProduct(productData);
+     const { error, value } = productValidationSchema.validate(productData);
+    const result = await productServices.createProduct(value);
     res.json({
         sucess : true,
         message : "Product created successfully!",

@@ -8,13 +8,7 @@ import { Order } from "./order.model";
 
 
 const createOrder = async(req : Request , res : Response) => {
-    // const orderData = req.body;
-    // const result = await orderServices.createOrder(orderData);
-    // res.json({
-    //     sucess : true,
-    //     message : "Orders created successfully!",
-    //     data : result
-    // })
+    
 
     try{
         const {error} = createOrderSchema.validate(req.body)
@@ -30,7 +24,7 @@ const createOrder = async(req : Request , res : Response) => {
         if(!mongoose.Types.ObjectId.isValid(productId)){
             return res.status(404).json({
                 success : false,
-                message : `product not found ${productId}`
+                message : `Order not found ${productId}`
             });
         }
 

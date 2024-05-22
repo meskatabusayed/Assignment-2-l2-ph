@@ -10,17 +10,18 @@ router.get('/', async (req: Request, res: Response) => {
     try {
       const email = req.query.email as string;
       let products: TOrder[];
+      
   
       if (email) {
         products = await Order.find({ email: { $regex: email, $options: 'i' } },
         );
         res.status(200).json({
-            success : true,
-            message : "Orders fetched successfully for user email!",
+            success : true ,
+            message : products,
             data : products
           });
 
-      } else {
+      }else {
         products = await Order.find();
         res.status(200).json({
                         success : true,
