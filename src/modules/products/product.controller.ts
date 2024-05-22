@@ -19,25 +19,25 @@ const createProduct = async(req : Request , res : Response) => {
 
 //get All Products
 
-const getAllProducts = async(req : Request , res : Response) => {
-    try{
-        const result = await productServices.getAllProducts();
+// const getAllProducts = async(req : Request , res : Response) => {
+//     try{
+//         const result = await productServices.getAllProducts();
 
-        res.status(200).json({
-            success : true,
-            messgae : "Products fetched successfully!",
-            data : result
-        })
+//         res.status(200).json({
+//             success : true,
+//             messgae : "Products fetched successfully!",
+//             data : result
+//         })
 
 
-    }catch(error : any){
-        res.status(500).json({
-            success : false,
-            message : "Could not faced products",
-            error : error
-        })
-    }
-}
+//     }catch(error : any){
+//         res.status(500).json({
+//             success : false,
+//             message : "Could not faced products",
+//             error : error
+//         })
+//     }
+// }
 
 //getSpecificData
 
@@ -121,36 +121,7 @@ const deleteProductById = async(req : Request , res : Response) => {
     }
 }
 
-//search Product
 
-const searchProduct = async(req : Request , res : Response) => {
-    try{
-        
-        const searchTerm = req.query.searchTerm as string;
-        const products = await Product.find({
-            $or: [
-                { name: { $regex: searchTerm, $options: 'i' } },
-                { description: { $regex: searchTerm, $options: 'i' } }
-            ]
-        });
-
-        
-
-        res.status(200).json({
-            success : true,
-            messgae : `Products matching search term '${searchTerm}' fetched successfully!`,
-            data : products
-        })
-        
-
-    }catch(error : any){
-        res.status(500).json({
-            success : false,
-            message : "Could not fached product",
-            error : error
-        })
-    }
-}
 
 
 
@@ -161,9 +132,9 @@ const searchProduct = async(req : Request , res : Response) => {
 
 export const productControllers = {
     createProduct,
-    getAllProducts,
+    //getAllProducts,
     getSpecificProduct,
     updateProductById,
     deleteProductById,
-    searchProduct
+    
 }

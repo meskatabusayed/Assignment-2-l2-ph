@@ -9,10 +9,10 @@ const createProduct = async (payLoad: TProduct) => {
 
 //getAllProducts
 
-const getAllProducts = async () => {
-    const result = await Product.find({ isDelete: { $ne: true } });
-    return result;
-}
+// const getAllProducts = async () => {
+//     const result = await Product.find({ isDelete: { $ne: true } });
+//     return result;
+// }
 
 //get Specific data
 
@@ -55,7 +55,7 @@ const deleteProductById = async (productId: String) => {
 
 export const productServices = {
     createProduct,
-    getAllProducts,
+    //getAllProducts,
     getSpecificProduct,
     updateProductById,
     deleteProductById,
